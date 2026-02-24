@@ -1,0 +1,184 @@
+import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:flutter_form_builder/flutter_form_builder.dart';
+import 'package:flutter_svg/svg.dart';
+import 'package:pract/configs/configs.dart';
+
+part 'enums.dart';
+
+class SearchField extends StatefulWidget {
+  final String name;
+  final TextEditingController? controller;
+  final String? hint;
+  final bool? enabled;
+  final bool readOnly;
+  final Widget? suffixIcon;
+  final String? initialValue;
+  final TextInputType? textInputType;
+  final String? errorText;
+  final String? Function(String?)? validator;
+  final List<TextInputFormatter>? inputformatters;
+  final SearchFieldType type;
+  final VoidCallback? onTapAdd;
+  final Color? textColor;
+  final Color? fillColor;
+  final Color? iconColor;
+  final double? borderRadius;
+  final Color? borderColor;
+  final bool hasShadow;
+
+  const SearchField({
+    super.key,
+    this.controller,
+    this.enabled,
+    this.initialValue,
+    this.suffixIcon,
+    required this.name,
+    this.hint,
+    this.readOnly = false,
+    this.textInputType,
+    this.inputformatters,
+    this.errorText,
+    this.validator,
+    this.type = SearchFieldType.primary,
+    this.onTapAdd,
+    this.textColor,
+    this.fillColor,
+    this.iconColor,
+    this.borderRadius,
+    this.borderColor,
+    this.hasShadow = false,
+  });
+
+  @override
+  SearchFieldState createState() => SearchFieldState();
+}
+
+class SearchFieldState extends State<SearchField> {
+  late FocusNode _focusNode;
+
+  @override
+  void initState() {
+    super.initState();
+    _focusNode = FocusNode();
+  }
+
+  @override
+  void dispose() {
+    _focusNode.dispose();
+    super.dispose();
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    App.init(context);
+    ScreenUtil.init(context, designSize: const Size(375, 812));
+
+    final textColor = widget.textColor ?? AppTheme.c.text.shade800!;
+
+    return IgnorePointer(
+      ignoring: widget.enabled == false || widget.readOnly,
+      child: Container(
+        decoration: BoxDecoration(
+          borderRadius: BorderRadius.circular(widget.borderRadius ?? 12.r),
+          boxShadow: widget.hasShadow
+              ? [
+                  BoxShadow(
+                    color: Colors.black.withValues(alpha: 0.05),
+                    blurRadius: 25,
+                    offset: const Offset(0, 4),
+                  ),
+                ]
+              : [],
+        ),
+        child: FormBuilderTextField(
+          controller: widget.controller,
+          inputFormatters: widget.inputformatters,
+          focusNode: _focusNode,
+          style: AppText.b1!.copyWith(color: textColor),
+          cursorColor: textColor,
+          enabled: widget.enabled ?? true,
+          initialValue: widget.initialValue,
+          name: widget.name,
+          keyboardType: widget.textInputType,
+          readOnly: widget.readOnly,
+          onTapOutside: (_) {
+            _focusNode.unfocus();
+          },
+          decoration: InputDecoration(
+            errorText: widget.errorText,
+            prefixIcon: Padding(
+              padding: EdgeInsets.only(
+                left: 12.w,
+                right: 8.w,
+                top: 0,
+                bottom: 0,
+              ),
+              child:
+                  widget.suffixIcon ??
+                  SvgPicture.asset(
+                    'assets/svgs/search.svg',
+                    width: 24.w,
+                    height: 24.h,
+                    colorFilter: ColorFilter.mode(
+                      widget.iconColor ?? AppTheme.c.text.main!,
+                      BlendMode.srcIn,
+                    ),
+                  ),
+            ),
+            suffixIconConstraints: BoxConstraints(
+              minWidth: 24.w,
+              minHeight: 24.h,
+            ),
+            filled: true,
+            fillColor: widget.fillColor ?? AppTheme.c.white,
+
+            contentPadding: EdgeInsets.symmetric(
+              horizontal: 12.w,
+              vertical: 12.h,
+            ),
+            hintText: widget.hint ?? 'Search here',
+            hintStyle: AppText.b1!.cl(AppTheme.c.text.main!),
+            enabledBorder: OutlineInputBorder(
+              borderRadius: BorderRadius.circular(widget.borderRadius ?? 10.r),
+              borderSide: BorderSide(
+                width: 1.w,
+                color: widget.borderColor ?? AppTheme.c.lightGrey.main!,
+              ),
+            ),
+            focusedBorder: OutlineInputBorder(
+              borderRadius: BorderRadius.circular(widget.borderRadius ?? 10.r),
+              borderSide: BorderSide(
+                width: 1.w,
+                color: widget.borderColor ?? AppTheme.c.lightGrey.main!,
+              ),
+            ),
+            errorBorder: OutlineInputBorder(
+              borderRadius: BorderRadius.circular(widget.borderRadius ?? 10.r),
+              borderSide: BorderSide(
+                color: Colors.red.withAlpha(200),
+                width: AppDimensions.normalize(0.5),
+              ),
+            ),
+            focusedErrorBorder: OutlineInputBorder(
+              borderRadius: BorderRadius.circular(widget.borderRadius ?? 10.r),
+              borderSide: BorderSide(
+                color: Colors.red.withAlpha(200),
+                width: AppDimensions.normalize(0.5),
+              ),
+            ),
+            disabledBorder: OutlineInputBorder(
+              borderRadius: BorderRadius.circular(widget.borderRadius ?? 10.r),
+              borderSide: BorderSide(
+                width: AppDimensions.normalize(0.75),
+                color: AppTheme.c.white!,
+              ),
+            ),
+          ),
+          validator: widget.validator,
+        ),
+      ),
+    );
+  }
+}
