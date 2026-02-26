@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:pract/configs/configs.dart';
-import 'package:pract/widget_liz/widgetz/select_payment/reviews_card.dart';
+import 'package:pract/widget_liz/widgetz/Reviews_sec/reviews_card.dart';
 
 class ReviewList extends StatelessWidget {
   ReviewList({super.key});
@@ -32,9 +33,10 @@ class ReviewList extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-         padding: Space.all(16),
+         padding: Space.hf(16),
             decoration: BoxDecoration(
-              borderRadius: BorderRadius.circular(24)
+              borderRadius: BorderRadius.circular(24.r),
+              color: AppTheme.c.white
             ),
       child: Column(
         children: List.generate(reviews.length, (index) {

@@ -20,7 +20,8 @@ class ReviewCard extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-    padding: Space.all(16),
+    padding: Space.vf(16),
+    
     width: double.infinity,
       decoration: BoxDecoration(
         color: AppTheme.c.white,

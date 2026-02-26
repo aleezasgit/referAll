@@ -1,16 +1,24 @@
 
 import 'package:flutter/material.dart';
 import 'package:pract/configs/configs.dart';
+import 'package:pract/screens/profile/agent/agent_profile/agent_resource/account_detail/widgets/pract_agent.dart';
+import 'package:pract/widget_liz/faqs_expanded.dart';
 import 'package:pract/widget_liz/profile_sec.dart';
+import 'package:pract/widget_liz/resources_stuff/announcement_tile_list.dart';
+import 'package:pract/widget_liz/resources_stuff/attatched_madia_card.dart';
+import 'package:pract/widget_liz/resources_stuff/marketing_assets.dart';
+import 'package:pract/widget_liz/resources_stuff/new_updates_list.dart';
+import 'package:pract/widget_liz/resources_stuff/tapbar.dart';
 
 import 'package:pract/widget_liz/statusexpandable_card.dart';
-import 'package:pract/widget_liz/widgetz/select_payment/review_list.dart';
-import 'package:pract/widget_liz/widgetz/select_payment/review_rating.dart';
-import 'package:pract/widget_liz/widgetz/select_payment/review_stat.dart';
-import 'package:pract/widget_liz/widgetz/select_payment/reviews_card.dart';
+import 'package:pract/widget_liz/widgetz/Reviews_sec/review_list.dart';
+import 'package:pract/widget_liz/widgetz/Reviews_sec/review_rating.dart';
+import 'package:pract/widget_liz/widgetz/Reviews_sec/review_stat.dart';
+import 'package:pract/widget_liz/widgetz/Reviews_sec/reviews_card.dart';
 import 'package:pract/widgets/agentinfo_card.dart';
 import 'package:pract/widgets/agentmarketing_card.dart';
 import 'package:pract/widgets/core/enums/request_status.dart';
+import 'package:pract/widgets/expanded.dart';
 
 class PracticingScreen extends StatelessWidget {
   const PracticingScreen({super.key});
@@ -28,12 +36,7 @@ class PracticingScreen extends StatelessWidget {
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
            
-//           CustomExpandableCard(
-//         title: "What is the Referral platform ?",
-//         description:
-//         "Other real estate analysts have suggested that market fluctuations are becoming less impactful on property values, mainly because a significant portion of available properties has already been sold.",
-//             ),
-//             Space.yf(5),
+
 
             
            
@@ -131,14 +134,29 @@ Space.yf(12),
   },
 ),
 
- ReviewList(),
 
-ReviewRating(),
-ReviewStatsSection(),
+//24/feb
 
 
+//  ReviewList(),
+
+// ReviewRating(),
+// ReviewStatsSection(),
+// NewUpdatesHorizontalList(),
+// AnnouncementList(),
+// AnnouncementFaqTabBar(),
+//   Space.yf(5),
+// ExpandableCardFaqList(),
+//             Space.yf(5),
 
 
+ExpandableCard(title: "What is the Referral platform ?", description: "Other real estate analysts have suggested that market fluctuations are becoming less impactful on property values, mainly because a significant portion of available properties has already been sold."),
+
+
+Space.yf(6),
+MarketingAssets(),
+Space.yf(6),
+AttatchedMadiaCard(),
 
 
             
