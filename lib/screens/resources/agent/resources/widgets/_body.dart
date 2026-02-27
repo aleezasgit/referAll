@@ -24,7 +24,7 @@ class _Body extends StatelessWidget {
                   children: [
 
                     Container(
-                      padding: Space.all(16),
+                      padding:  Space.hf(16),
                       child: Row(
                         mainAxisAlignment: MainAxisAlignment.spaceBetween,
                         children: [
@@ -44,7 +44,7 @@ class _Body extends StatelessWidget {
                   Space.yf(24),
 
                     
-                    Container(  padding: Space.all(16),
+                    Container(  padding: Space.hf(16),
                       child: Row(
                         mainAxisAlignment: MainAxisAlignment.spaceBetween,
                         children: [
@@ -60,7 +60,7 @@ class _Body extends StatelessWidget {
                     Space.yf(16),
 
                     Container(
-                        padding: Space.all(16),
+                         padding: Space.hf(16),
                         child: MarketingAssets()),
 
                     Space.yf(24),
@@ -69,7 +69,7 @@ class _Body extends StatelessWidget {
                     /// Other Resources
                     /// =========================
                     Container(
-                        padding: Space.all(16),
+                        padding:  Space.hf(16),
                       child: Text(
                         "Other Resources",
                         style: AppText.h5b?.w(7),
@@ -79,7 +79,7 @@ class _Body extends StatelessWidget {
                     Space.yf(12),
 
                     Container(
-                        padding: Space.all(16),
+                        padding:  Space.hf(16),
                         
                         child:SwitchTabBar(options: ['Announcements', 'FAQs'],
                         tabs: 
