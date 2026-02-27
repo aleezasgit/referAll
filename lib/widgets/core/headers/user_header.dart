@@ -17,7 +17,7 @@ class UserHeader extends StatelessWidget {
             shape: BoxShape.circle,
             border: Border.all(color: AppTheme.c.primary.main!, width: 1.5.w),
             image: DecorationImage(
-              image: AssetImage('assets/pngs/pp.png'),
+              image: AssetImage('assets/pngs/OB_2.png'),
               fit: BoxFit.cover,
             ),
           ),
@@ -37,9 +37,9 @@ class UserHeader extends StatelessWidget {
         ),
         CircleAvatar(
           radius: 20.r,
-          backgroundColor: AppTheme.c.primary.shade100!,
+          backgroundColor: AppTheme.c.primary.shade100!, 
           child: SvgPicture.asset(
-            'assets/svgs/bell.svg',
+            'assets/svgs/notification-bing.svg',
             width: 22.w,
             height: 22.h,
           ),

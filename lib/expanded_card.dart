@@ -2,6 +2,7 @@
 import 'package:flutter/material.dart';
 import 'package:pract/configs/configs.dart';
 import 'package:pract/screens/profile/agent/agent_profile/agent_resource/account_detail/widgets/pract_agent.dart';
+import 'package:pract/screens/resources/agent/resources/resources.dart';
 import 'package:pract/widget_liz/faqs_expanded.dart';
 import 'package:pract/widget_liz/profile_sec.dart';
 import 'package:pract/widget_liz/resources_stuff/announcement_tile_list.dart';
@@ -157,6 +158,7 @@ Space.yf(6),
 MarketingAssets(),
 Space.yf(6),
 AttatchedMadiaCard(),
+
 
 
             

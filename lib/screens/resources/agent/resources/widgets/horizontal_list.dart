@@ -1,10 +1,6 @@
-import 'package:flutter/material.dart';
-import 'package:flutter_svg/flutter_svg.dart';
-import 'package:pract/configs/configs.dart';
+part of '../resources.dart';
 
-/// ----------------------
-/// NEW UPDATES CARD
-/// ----------------------
+
 class NewUpdatesCard extends StatelessWidget {
   final String imagePath;
   final String title;
@@ -26,22 +22,22 @@ class NewUpdatesCard extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return  Container(
-  width: 186,
-  height: 228,   
+  width: 186.w,
+  height: 228.h,   
   padding: Space.all(12),
   decoration: BoxDecoration(
     color: AppTheme.c.white,
-    borderRadius: BorderRadius.circular(24),
+    borderRadius: BorderRadius.circular(24.r),
   ),
   child: Column(
     crossAxisAlignment: CrossAxisAlignment.start,
     children: [
 
       ClipRRect(
-        borderRadius: BorderRadius.circular(24),
+        borderRadius: BorderRadius.circular(24.r),
         child: Image.asset(
           imagePath,
-          height: 96,
+          height: 96.h,
           width: double.infinity,
           fit: BoxFit.cover,
         ),
@@ -51,11 +47,7 @@ class NewUpdatesCard extends StatelessWidget {
 
       Row(
         children: [
-          SizedBox(
-            width: 20,
-            height: 20,
-            child: Image.asset("assets/pngs/Avatar.png"),
-          ),
+          Image.asset("assets/pngs/Avatar.png",height: 20.h,width: 20.w,),
 
           Space.xf(8),
 
@@ -63,11 +55,8 @@ class NewUpdatesCard extends StatelessWidget {
 
           const Spacer(),
 
-         Container(
-          width: 16,
-          height: 16,
-          child: SvgPicture.asset('assets/svgs/dots-vertical.svg'),
-         )
+         SvgPicture.asset('assets/svgs/dots-vertical.svg',height: 16.h,width: 16.w,),
+
         ],
       ),
 
@@ -76,7 +65,10 @@ class NewUpdatesCard extends StatelessWidget {
       Text(
         title,
         style: AppText.l1b?.w(6),
+        maxLines: 2,
+        overflow: TextOverflow.ellipsis,
       ),
+
 
       Space.yf(12),
 
@@ -91,8 +83,8 @@ class NewUpdatesCard extends StatelessWidget {
 
           SvgPicture.asset(
             "assets/svgs/clock.svg", 
-            height: 16,
-            width: 16,
+            height: 16.h,
+            width: 16.w,
           ),
 
           Space.xf(4),
@@ -111,52 +103,21 @@ class NewUpdatesCard extends StatelessWidget {
 
 
 class NewUpdatesHorizontalList extends StatelessWidget {
-  NewUpdatesHorizontalList({super.key});
+  const NewUpdatesHorizontalList({super.key});
 
-  final List<Map<String, String>> dummyData = [
-    {
-      "image": "assets/pngs/b0b1cf0c367d0e6d07d582bd230587cbb251d37e.png",
-      "title": "Business Innovations: Shaping the Future of Commerce",
-      "type": "Single Family",
-      "time": "10 min",
-     
-    },
-    {
-      "image": "assets/pngs/OB_1.png",
-      "title": "Business Innovations: Shaping the Future of Commerce",
-      "type": "Single Family",
-      "time": "10 min",
-     
-   
-    },
-    {
-      "image": "assets/pngs/b0b1cf0c367d0e6d07d582bd230587cbb251d37e.png",
-      "title": "Business Innovations: Shaping the Future of Commerce",
-      "type": "Single Family",
-      "time": "10 min",
-     
-    },
-    {
-      "image": "assets/pngs/OB_1.png",
-      "title": "Business Innovations: Shaping the Future of Commerce",
-      "type": "Single Family",
-      "time": "10 min",
-     
-   
-    },
-  ];
-
+ 
   @override
   Widget build(BuildContext context) {
     return SizedBox(
-      height: 260,
+      height: 238.h,
       child: ListView.separated(
         scrollDirection: Axis.horizontal,
-        //padding: const EdgeInsets.symmetric(horizontal: 16),
-        itemCount: dummyData.length,
+        padding: Space.only(left: 12),
+
+        itemCount: _newupdatesdata.length,
         separatorBuilder: (_, __) => Space.xf(6),
         itemBuilder: (context, index) {
-          final item = dummyData[index];
+          final item = _newupdatesdata[index];
 
           return NewUpdatesCard(
             imagePath: item["image"]!,

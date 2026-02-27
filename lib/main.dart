@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:pract/expanded_card.dart';
 import 'package:pract/screens/profile/agent/agent_profile/agent_resource/account_detail/widgets/pract_agent.dart';
+import 'package:pract/screens/resources/agent/resources/resources.dart';
 import 'package:pract/widget_liz/screens/agent_profile.dart';
 
 void main() {
@@ -33,7 +34,8 @@ class MyApp extends StatelessWidget {
         // tested with just a hot reload.
         colorScheme: .fromSeed(seedColor: Colors.deepPurple),
       ),
-      home: ArticleDetailsScreen(),
+      home: ResourcefirstHome()
+,
     );
   }
 }
