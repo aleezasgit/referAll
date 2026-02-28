@@ -91,6 +91,7 @@ class AnnouncementList extends StatelessWidget {
       "time": "3 weeks ago",
       "title": "How Remote Work is Reshaping Urban Living",
     },
+  
   ];
 
   @override

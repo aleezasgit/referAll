@@ -1,6 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:pract/expanded_card.dart';
 import 'package:pract/screens/profile/agent/agent_profile/agent_resource/account_detail/widgets/pract_agent.dart';
+import 'package:pract/screens/resources/agent/accept_referals/accept_referrals.dart';
+import 'package:pract/screens/resources/agent/announcement/announcement.dart';
+import 'package:pract/screens/resources/agent/article_detail/article_details.dart';
 import 'package:pract/screens/resources/agent/resources/resources.dart';
 import 'package:pract/widget_liz/screens/agent_profile.dart';
 
@@ -34,7 +37,7 @@ class MyApp extends StatelessWidget {
         // tested with just a hot reload.
         colorScheme: .fromSeed(seedColor: Colors.deepPurple),
       ),
-      home: ResourcefirstHome()
+      home: AnnouncementScreen()
 ,
     );
   }
