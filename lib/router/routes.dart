@@ -11,4 +11,6 @@ abstract class AppRoutes {
   static const linkSent = '/link-sent';
   static const resetPassword = '/reset-password';
   static const bottomNavbar = '/bottom-navbar';
+
+  static get manageSeat => null;
 }

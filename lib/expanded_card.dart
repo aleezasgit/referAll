@@ -1,10 +1,10 @@
 
 import 'package:flutter/material.dart';
 import 'package:pract/configs/configs.dart';
-import 'package:pract/screens/profile/agent/agent_profile/agent_resource/account_detail/widgets/pract_agent.dart';
 import 'package:pract/screens/resources/agent/resources/resources.dart';
 import 'package:pract/widget_liz/faqs_expanded.dart';
 import 'package:pract/widget_liz/profile_sec.dart';
+import 'package:pract/widget_liz/profile_widgets/buttons.dart';
 import 'package:pract/widget_liz/resources_stuff/announcement_tile_list.dart';
 import 'package:pract/widget_liz/resources_stuff/attatched_madia_card.dart';
 import 'package:pract/widget_liz/resources_stuff/marketing_assets.dart';
@@ -19,6 +19,7 @@ import 'package:pract/widget_liz/widgetz/Reviews_sec/reviews_card.dart';
 import 'package:pract/widgets/agentinfo_card.dart';
 import 'package:pract/widgets/agentmarketing_card.dart';
 import 'package:pract/widgets/core/enums/request_status.dart';
+import 'package:pract/widgets/design/buttons/app_button/app_button.dart';
 import 'package:pract/widgets/expanded.dart';
 
 class PracticingScreen extends StatelessWidget {
@@ -158,9 +159,17 @@ Space.yf(6),
 MarketingAssets(),
 Space.yf(6),
 AttatchedMadiaCard(),
+ Space.yf(12),
+ AccountActionsSection(),
+
+Space.yf(10),
+
+ 
+  
 
 
-
+       
+            
             
           ],
         ),
