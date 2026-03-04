@@ -2,7 +2,10 @@ import 'package:pract/expanded_card.dart';
 
 abstract class AppRoutes {
   static const splash = '/splash';
-   static const PracticingScreen = '/practicing-screen';
+  static const PracticingScreen = '/practicing-screen';
+  static const profileInfo = "/profile-info";
+    static const support = "/support";
+
   static const onBoarding = '/onboarding';
   static const selectRole = '/select-role';
   static const signIn = '/sign-in';
@@ -13,4 +16,6 @@ abstract class AppRoutes {
   static const bottomNavbar = '/bottom-navbar';
 
   static get manageSeat => null;
+
+  static get subscription => null;
 }

@@ -4,7 +4,6 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_form_builder/flutter_form_builder.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:pract/configs/configs.dart';
-
 part 'enums.dart';
 
 class SearchField extends StatefulWidget {
@@ -109,53 +108,52 @@ class SearchFieldState extends State<SearchField> {
           decoration: InputDecoration(
             errorText: widget.errorText,
             prefixIcon: Padding(
-              padding: EdgeInsets.only(
-                left: 12.w,
-                right: 8.w,
-                top: 0,
-                bottom: 0,
-              ),
+              padding: EdgeInsets.only(left: 16.w, right: 8.w),
               child:
                   widget.suffixIcon ??
                   SvgPicture.asset(
                     'assets/svgs/search.svg',
-                    width: 24.w,
-                    height: 24.h,
+                    width: 16.w,
+                    height: 16.h,
                     colorFilter: ColorFilter.mode(
-                      widget.iconColor ?? AppTheme.c.text.main!,
+                      widget.iconColor ?? AppTheme.c.text.shade800!,
                       BlendMode.srcIn,
                     ),
                   ),
             ),
             suffixIconConstraints: BoxConstraints(
-              minWidth: 24.w,
-              minHeight: 24.h,
+              minWidth: 16.w,
+              minHeight: 16.h,
+            ),
+            prefixIconConstraints: BoxConstraints(
+              minWidth: 16.w,
+              minHeight: 16.h,
             ),
             filled: true,
             fillColor: widget.fillColor ?? AppTheme.c.white,
 
             contentPadding: EdgeInsets.symmetric(
-              horizontal: 12.w,
-              vertical: 12.h,
+              horizontal: 16.w,
+              vertical: 18.h,
             ),
-            hintText: widget.hint ?? 'Search here',
-            hintStyle: AppText.b1!.cl(AppTheme.c.text.main!),
+            hintText: widget.hint ?? 'Search',
+            hintStyle: AppText.b1!.cl(textColor),
             enabledBorder: OutlineInputBorder(
-              borderRadius: BorderRadius.circular(widget.borderRadius ?? 10.r),
+              borderRadius: BorderRadius.circular(widget.borderRadius ?? 80.r),
               borderSide: BorderSide(
                 width: 1.w,
                 color: widget.borderColor ?? AppTheme.c.lightGrey.main!,
               ),
             ),
             focusedBorder: OutlineInputBorder(
-              borderRadius: BorderRadius.circular(widget.borderRadius ?? 10.r),
+              borderRadius: BorderRadius.circular(widget.borderRadius ?? 80.r),
               borderSide: BorderSide(
                 width: 1.w,
                 color: widget.borderColor ?? AppTheme.c.lightGrey.main!,
               ),
             ),
             errorBorder: OutlineInputBorder(
-              borderRadius: BorderRadius.circular(widget.borderRadius ?? 10.r),
+              borderRadius: BorderRadius.circular(widget.borderRadius ?? 80.r),
               borderSide: BorderSide(
                 color: Colors.red.withAlpha(200),
                 width: AppDimensions.normalize(0.5),

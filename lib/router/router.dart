@@ -1,18 +1,16 @@
 import 'package:flutter/material.dart';
 import 'package:pract/expanded_card.dart';
 import 'package:pract/router/routes.dart';
+import 'package:pract/screens/profile/agent/profile_info/profile_info.dart';
+import 'package:pract/screens/profile/agent/support/support.dart';
 
 
 final Map<String, Widget Function(dynamic)> appRoutes = {
   AppRoutes.splash: (_) => const PracticingScreen(),
-  // AppRoutes.onBoarding: (_) => const OnboardingScreen(),
-  // AppRoutes.selectRole: (_) => const SelectRoleScreen(),
-  // AppRoutes.signIn: (_) => const SignInScreen(),
-  // AppRoutes.signUp: (_) => const SignUpScreen(),
-  // AppRoutes.forgotPassword: (_) => const ForgotPasswordScreen(),
-  // AppRoutes.linkSent: (_) => const LinkSentScreen(),
-  // AppRoutes.resetPassword: (_) => const ResetPasswordScreen(),
-  // AppRoutes.bottomNavbar: (_) => const CustomBottomNavBar(),
+  AppRoutes.profileInfo: (_) => const ProfileInfoScreen(),
+  AppRoutes.support: (_) => const SupportScreen(),
+  
+
 };
 
 void navigateToScreen(BuildContext context, Widget screen) {

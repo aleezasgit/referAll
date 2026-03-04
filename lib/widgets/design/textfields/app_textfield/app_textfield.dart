@@ -5,6 +5,7 @@ import 'package:flutter_form_builder/flutter_form_builder.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:pract/configs/configs.dart';
 
+
 part 'enums.dart';
 
 class AppTextField extends StatefulWidget {
@@ -18,43 +19,36 @@ class AppTextField extends StatefulWidget {
   final String? helperText;
   final String? topHelperIcon;
   final String? labelHelperText;
-
   final bool? autoFocus;
   final FocusNode? node;
-
   final bool readOnly;
-
   final TextFieldType type;
-
   final Widget? prefixIcon;
   final Widget? suffixIcon;
   final String? initialValue;
   final TextInputType? textInputType;
   final TextInputAction? textInputAction;
   final TextCapitalization textCapitalization;
-
   final String? errorText;
   final String? Function(String?)? validator;
   final void Function(String?)? onChanged;
   final void Function()? onEditComplete;
   final List<TextInputFormatter>? inputformatters;
-
   final void Function()? onTap;
-
   final int? maxLines;
   final int? minLines;
-
   final Color? fillColor;
   final TextStyle? style;
   final TextStyle? hintStyle;
   final bool gradientOnFocusOnly;
   final TextStyle? labelStyle;
   final int? maxLength;
-
   final bool onTapOutside;
+  final double? borderRadius;
 
   const AppTextField({
     super.key,
+    required this.name,
     this.node,
     this.label,
     this.controller,
@@ -68,7 +62,6 @@ class AppTextField extends StatefulWidget {
     this.validator,
     this.suffixIcon,
     this.onTap,
-    required this.name,
     this.hint,
     this.readOnly = false,
     this.isPass = false,
@@ -90,10 +83,11 @@ class AppTextField extends StatefulWidget {
     this.labelStyle,
     this.maxLength,
     this.onTapOutside = true,
+    this.borderRadius,
   });
 
   @override
-  AppTextFieldState createState() => AppTextFieldState();
+  State<AppTextField> createState() => AppTextFieldState();
 }
 
 class AppTextFieldState extends State<AppTextField> {
@@ -107,7 +101,7 @@ class AppTextFieldState extends State<AppTextField> {
     _focusNode = widget.node ?? FocusNode();
 
     _focusNode.addListener(() {
-      setState(() {}); // 🔥 forces rebuild on focus change
+      setState(() {});
     });
   }
 
@@ -156,102 +150,118 @@ class AppTextFieldState extends State<AppTextField> {
           Space.yf(6),
         ],
 
-        FormBuilderTextField(
-          name: widget.name,
-          controller: widget.controller,
-          focusNode: _focusNode,
-          maxLength: widget.maxLength,
-          minLines: widget.minLines,
-          maxLines: widget.maxLines ?? 1,
-          enabled: widget.enabled ?? true,
-          readOnly: widget.readOnly,
-          autofocus: widget.autoFocus ?? false,
-          keyboardType: widget.textInputType,
-          textInputAction: widget.textInputAction,
-          textCapitalization: widget.textCapitalization,
-          inputFormatters: widget.inputformatters,
-          initialValue: widget.initialValue,
-          obscureText: show,
-          style: widget.style ?? AppText.b1!.cl(AppTheme.c.text.shade800!),
-          cursorColor: AppTheme.c.primary.main!,
-          onTap: widget.onTap,
-          onTapOutside: widget.onTapOutside
-              ? (_) => FocusScope.of(context).unfocus()
-              : null,
-          validator: widget.validator,
-          onChanged: widget.onChanged,
-          onEditingComplete: widget.onEditComplete,
-
-          decoration: InputDecoration(
-            errorText: widget.errorText,
-            hintText: widget.hint,
-            hintStyle:
-                widget.hintStyle ?? AppText.b1!.cl(AppTheme.c.text.main!),
-
-            prefixIcon: widget.prefixIcon,
-            constraints: BoxConstraints(
-              minWidth: widget.prefixIcon != null ? 24.w : 0,
-              minHeight: widget.prefixIcon != null ? 24.h : 0,
-            ),
-            suffixIcon:
-                widget.suffixIcon ??
-                (widget.isPass!
-                    ? IconButton(
-                        padding: Space.hf(6).copyWith(left: 0),
-                        splashRadius: AppDimensions.normalize(8),
-                        onPressed: () => setState(() => show = !show),
-                        icon: SvgPicture.asset(
-                          show
-                              ? 'assets/svgs/eye-disabled.svg'
-                              : 'assets/svgs/eye-open.svg',
-                          width: 24.w,
-                          height: 24.h,
-                          colorFilter: AppTheme.c.text.main != null
-                              ? ColorFilter.mode(
-                                  AppTheme.c.text.main!,
-                                  BlendMode.srcIn,
-                                )
-                              : null,
-                        ),
-                      )
-                    : null),
-
-            filled: true,
-
-            // ✅ DIFFERENT FILL COLORS
-            fillColor: _focusNode.hasFocus
-                ? AppTheme.c.primary.shade100
-                : (widget.fillColor ?? AppTheme.c.white),
-
-            contentPadding: EdgeInsets.symmetric(
-              horizontal: 12.w,
-              vertical: 15.h,
-            ),
-
-            // ✅ UNFOCUSED BORDER
-            enabledBorder: OutlineInputBorder(
-              borderRadius: BorderRadius.circular(12.r),
-              borderSide: BorderSide(
-                color: AppTheme.c.lightGrey.main!,
-                width: 1,
+        /// ✅ Shadow Wrapper
+        AnimatedContainer(
+          duration: Duration(milliseconds: 150),
+          decoration: BoxDecoration(
+            borderRadius: BorderRadius.circular(widget.borderRadius ?? 80.r),
+            boxShadow: _focusNode.hasFocus
+                ? [
+                    BoxShadow(
+                      color: const Color(0x33D5FE3E), // #D5FE3E33
+                      blurRadius: 1,
+                      spreadRadius: 3,
+                      offset: const Offset(0, 0),
+                    ),
+                  ]
+                : [],
+          ),
+          child: FormBuilderTextField(
+            name: widget.name,
+            controller: widget.controller,
+            focusNode: _focusNode,
+            maxLength: widget.maxLength,
+            minLines: widget.minLines,
+            maxLines: widget.maxLines ?? 1,
+            enabled: widget.enabled ?? true,
+            readOnly: widget.readOnly,
+            autofocus: widget.autoFocus ?? false,
+            keyboardType: widget.textInputType,
+            textInputAction: widget.textInputAction,
+            textCapitalization: widget.textCapitalization,
+            inputFormatters: widget.inputformatters,
+            initialValue: widget.initialValue,
+            obscureText: show,
+            style: widget.style ?? AppText.b1!.cl(AppTheme.c.text.shade800!),
+            cursorColor: AppTheme.c.secondary.main!,
+            onTap: widget.onTap,
+            onTapOutside: widget.onTapOutside
+                ? (_) => FocusScope.of(context).unfocus()
+                : null,
+            validator: widget.validator,
+            onChanged: widget.onChanged,
+            onEditingComplete: widget.onEditComplete,
+            decoration: InputDecoration(
+              errorText: widget.errorText,
+              hintText: widget.hint,
+              hintStyle:
+                  widget.hintStyle ?? AppText.b1!.cl(AppTheme.c.text.shade800!),
+              prefixIcon: widget.prefixIcon,
+              suffixIcon:
+                  widget.suffixIcon ??
+                  (widget.isPass == true
+                      ? IconButton(
+                          onPressed: () => setState(() => show = !show),
+                          icon: SvgPicture.asset(
+                            show
+                                ? 'assets/svgs/eye-disabled.svg'
+                                : 'assets/svgs/eye-open.svg',
+                            width: 16.w,
+                            height: 16.h,
+                          ),
+                        )
+                      : null),
+              filled: true,
+              prefixIconConstraints: BoxConstraints(
+                minWidth: 16.w,
+                minHeight: 16.h,
               ),
-            ),
+              suffixIconConstraints: BoxConstraints(
+                minWidth: 24.w,
+                minHeight: 24.h,
+              ),
+              fillColor: (widget.fillColor ?? AppTheme.c.white),
+              contentPadding: EdgeInsets.symmetric(
+                horizontal: 16.w,
+                vertical: 15.5.h,
+              ),
 
-            // ✅ FOCUSED BORDER
-            focusedBorder: OutlineInputBorder(
-              borderRadius: BorderRadius.circular(12.r),
-              borderSide: BorderSide(color: AppTheme.c.primary.main!, width: 1),
-            ),
+              /// UNFOCUSED
+              enabledBorder: OutlineInputBorder(
+                borderRadius: BorderRadius.circular(
+                  widget.borderRadius ?? 80.r,
+                ),
+                borderSide: BorderSide(
+                  color: AppTheme.c.lightGrey.main!,
+                  width: 1,
+                ),
+              ),
 
-            // ✅ ERROR BORDER
-            errorBorder: OutlineInputBorder(
-              borderRadius: BorderRadius.circular(12.r),
-              borderSide: BorderSide(color: AppTheme.c.error.main!, width: 1),
-            ),
+              /// FOCUSED
+              focusedBorder: OutlineInputBorder(
+                borderRadius: BorderRadius.circular(
+                  widget.borderRadius ?? 80.r,
+                ),
+                borderSide: BorderSide(
+                  color: AppTheme.c.secondary.main!,
+                  width: 1.2,
+                ),
+              ),
 
-            focusedErrorBorder: OutlineInputBorder(
-              borderRadius: BorderRadius.circular(12.r),
-              borderSide: BorderSide(color: AppTheme.c.error.main!, width: 1),
+              /// ERROR
+              errorBorder: OutlineInputBorder(
+                borderRadius: BorderRadius.circular(
+                  widget.borderRadius ?? 80.r,
+                ),
+                borderSide: BorderSide(color: AppTheme.c.error.main!, width: 1),
+              ),
+
+              focusedErrorBorder: OutlineInputBorder(
+                borderRadius: BorderRadius.circular(
+                  widget.borderRadius ?? 80.r,
+                ),
+                borderSide: BorderSide(color: AppTheme.c.error.main!, width: 1),
+              ),
             ),
           ),
         ),

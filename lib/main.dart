@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:pract/expanded_card.dart';
 import 'package:pract/screens/profile/agent/my_profile/my_profile.dart';
+import 'package:pract/screens/profile/agent/profile_info/profile_info.dart';
+import 'package:pract/screens/profile/agent/support/support.dart';
 import 'package:pract/screens/resources/agent/accept_referals/accept_referrals.dart';
 import 'package:pract/screens/resources/agent/announcement/announcement.dart';
 import 'package:pract/screens/resources/agent/article_detail/article_details.dart';

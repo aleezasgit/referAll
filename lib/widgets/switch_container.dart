@@ -3,6 +3,7 @@ import 'package:flutter_form_builder/flutter_form_builder.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:pract/configs/configs.dart';
 
+
 class SwitchContainer extends StatelessWidget {
   final String name;
   final List<String> options;
@@ -58,10 +59,11 @@ class SwitchContainer extends StatelessWidget {
                     bottom: 0,
                     width: segmentWidth,
                     child: Container(
+                      height: 44.h,
                       margin: EdgeInsets.all(4.w),
                       decoration: BoxDecoration(
                         color: selectedColor ?? AppTheme.c.text.shade800!,
-                        borderRadius: BorderRadius.circular(44.r),
+                        borderRadius: BorderRadius.circular(32.r),
                       ),
                     ),
                   ),

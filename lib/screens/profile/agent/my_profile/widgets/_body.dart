@@ -30,6 +30,12 @@ class _Body extends StatelessWidget {
                 _ProfileTile(
                   title: "Profile Info",
                   iconPath: "assets/svgs/user.svg",
+                  onTap: () {
+                   navigateToFullScreen(
+  context,
+  AppRoutes.profileInfo,
+);
+                  },
                 ),
 
                 Space.yf(6),
@@ -37,6 +43,9 @@ class _Body extends StatelessWidget {
                 _ProfileTile(
                   title: "Payment Plan",
                   iconPath: "assets/svgs/crown-2 (1).svg",
+                  onTap: (){
+                    print("Payment Plan Tapped");
+                  },
                 ),
 
                 Space.yf(6),
@@ -52,6 +61,12 @@ class _Body extends StatelessWidget {
                 _ProfileTile(
                   title: "Contact Us",
                   iconPath: "assets/svgs/notification.svg",
+                    onTap: () {
+                   navigateToFullScreen(
+                      context,
+              AppRoutes.support,
+);
+                  }
                 ),
 
                 const Spacer(),
