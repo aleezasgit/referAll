@@ -5,6 +5,7 @@ import 'package:pract/screens/resources/agent/resources/resources.dart';
 import 'package:pract/widget_liz/faqs_expanded.dart';
 import 'package:pract/widget_liz/profile_sec.dart';
 import 'package:pract/widget_liz/profile_widgets/buttons.dart';
+import 'package:pract/widget_liz/profile_widgets/notification_screen.dart';
 import 'package:pract/widget_liz/resources_stuff/announcement_tile_list.dart';
 import 'package:pract/widget_liz/resources_stuff/attatched_madia_card.dart';
 import 'package:pract/widget_liz/resources_stuff/marketing_assets.dart';

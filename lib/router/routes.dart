@@ -3,6 +3,8 @@ import 'package:pract/expanded_card.dart';
 abstract class AppRoutes {
   static const splash = '/splash';
   static const PracticingScreen = '/practicing-screen';
+  
+    static const NotificationScreen= '/notification-screen';
   static const profileInfo = "/profile-info";
     static const contactUs = "/contact-us";
 static const brokerageProfile = "/brokerage-profile";

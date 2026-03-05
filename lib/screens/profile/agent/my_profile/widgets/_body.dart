@@ -51,6 +51,9 @@ class _Body extends StatelessWidget {
                   title: "Notifications",
                   iconPath: "assets/svgs/notification.svg",
                   notificationCount: 10,
+                  onTap: ()  {
+                      AppRoutes.NotificationScreen.push(context);
+                    } ,
                 ),
 
                 Space.yf(6),
@@ -111,6 +114,9 @@ class _Body extends StatelessWidget {
         ),
 
                 Space.yf(10),
+                ////Extra
+                ///
+               // NotificationSection(),
               ],
             ),
       ),
