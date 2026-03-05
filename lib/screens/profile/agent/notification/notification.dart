@@ -17,6 +17,7 @@ part 'widgets/_body.dart';
 part '_state.dart';
 part 'static/_form_data.dart';
 part 'static/_form_keys.dart';
+part 'data.dart';
 
 class NotificationScreen extends StatelessWidget {
   const NotificationScreen({super.key});

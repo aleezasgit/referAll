@@ -1,12 +1,13 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:flutter_svg/svg.dart';
 import 'package:pract/configs/configs.dart';
 import 'package:pract/widgets/design/buttons/app_button/app_button.dart';
 
 /// ----------------------
 /// BROKER REQUEST CARD
 /// ----------------------
-class BrokerRequestCard extends StatelessWidget {
+class BrokerRequestCard extends StatefulWidget {
   final String name;
   final String time;
   final String email;
@@ -25,14 +26,23 @@ class BrokerRequestCard extends StatelessWidget {
   });
 
   @override
+  State<BrokerRequestCard> createState() => _BrokerRequestCardState();
+}
+
+class _BrokerRequestCardState extends State<BrokerRequestCard> {
+
+  bool isExpanded = false;
+
+  @override
   Widget build(BuildContext context) {
     return Container(
       padding: Space.all(16),
       decoration: BoxDecoration(
         color: AppTheme.c.white,
-        borderRadius: BorderRadius.circular(20.r),
+        borderRadius: BorderRadius.circular(24.r),
       ),
       child: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
         children: [
 
           /// TOP SECTION
@@ -49,9 +59,12 @@ class BrokerRequestCard extends StatelessWidget {
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
-                    Text(name, style: AppText.b1b?.w(6)),
-                    Space.yf(4),
-                    Text(time, style: AppText.l2?.cl(AppTheme.c.text.main!)),
+                    Text(widget.name, style: AppText.b1b?.w(6)),
+                    Space.yf(2),
+                    Text(
+                      widget.time,
+                      style: AppText.l1?.w(4).cl(AppTheme.c.text.main!),
+                    ),
                   ],
                 ),
               ),
@@ -59,29 +72,77 @@ class BrokerRequestCard extends StatelessWidget {
               Container(
                 padding: Space.all(8, 4),
                 decoration: BoxDecoration(
-                  color: AppTheme.c.accent.red,
+                  color: AppTheme.c.error.shade100,
                   borderRadius: BorderRadius.circular(40.r),
                 ),
-                child: Text(
-                  "20:15",
-                  style: AppText.l2b?.cl(AppTheme.c.white!),
+                child: Row(
+                  children: [
+                    SvgPicture.asset(
+                      "assets/svgs/clockred.svg",
+                      height: 12,
+                      width: 12,
+                    ),
+                    Space.xf(6),
+                    Text(
+                      "20:15",
+                      style: AppText.l2b?.w(6),
+                    ),
+                  ],
                 ),
               ),
             ],
           ),
 
-          Space.yf(12),
+          Space.yf(16),
 
-          /// EXPANDABLE DETAILS
-          Theme(
-            data: Theme.of(context).copyWith(dividerColor: Colors.transparent),
-            child: ExpansionTile(
-              tilePadding: EdgeInsets.zero,
-              childrenPadding: EdgeInsets.zero,
-              title: Text("Broker Details", style: AppText.b1b),
+          /// 🔹 HEADER ROW (CUSTOM EXPAND)
+          InkWell(
+            onTap: () {
+              setState(() {
+                isExpanded = !isExpanded;
+              });
+            },
+            borderRadius: BorderRadius.circular(16.r),
+            child: Row(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
 
-                Divider(color: AppTheme.c.lightGrey.main),
+                Text(
+                  "Broker Details",
+                  style: AppText.b1b?.w(6),
+                ),
+
+                AnimatedRotation(
+                  turns: isExpanded ? 0.5 : 0,
+                  duration: const Duration(milliseconds: 250),
+                  child: SvgPicture.asset(
+                    "assets/svgs/arrow-right.svg",
+                    width: 18,
+                    height: 18,
+                  ),
+                ),
+              ],
+            ),
+          ),
+
+          /// 🔹 ANIMATED CONTENT
+          AnimatedCrossFade(
+            duration: const Duration(milliseconds: 250),
+            crossFadeState: isExpanded
+                ? CrossFadeState.showSecond
+                : CrossFadeState.showFirst,
+            firstChild: const SizedBox(),
+            secondChild: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+
+                Space.yf(12),
+
+                Container(
+                  width: double.infinity,
+                  height: 1,
+                  color: AppTheme.c.lightGrey.shade400,
+                ),
 
                 Space.yf(12),
 
@@ -89,39 +150,39 @@ class BrokerRequestCard extends StatelessWidget {
                   children: [
                     Expanded(
                       child: _DetailItem(
-                        title: email,
+                        title: widget.email,
                         subtitle: "Email Address",
                       ),
                     ),
                     Expanded(
                       child: _DetailItem(
-                        title: phone,
+                        title: widget.phone,
                         subtitle: "Phone Number",
                       ),
                     ),
                   ],
                 ),
 
-                Space.yf(12),
+                Space.yf(18),
 
                 Row(
                   children: [
                     Expanded(
                       child: _DetailItem(
-                        title: agents,
+                        title: widget.agents,
                         subtitle: "Total Agents",
                       ),
                     ),
                     Expanded(
                       child: _DetailItem(
-                        title: address,
+                        title: widget.address,
                         subtitle: "Address",
                       ),
                     ),
                   ],
                 ),
 
-                Space.yf(20),
+                Space.yf(16),
 
                 Row(
                   children: [
@@ -136,7 +197,7 @@ class BrokerRequestCard extends StatelessWidget {
                       ),
                     ),
 
-                    Space.xf(12),
+                    Space.xf(8),
 
                     Expanded(
                       child: AppButton(
@@ -150,7 +211,7 @@ class BrokerRequestCard extends StatelessWidget {
                   ],
                 ),
 
-                Space.yf(10),
+            
               ],
             ),
           ),
@@ -177,11 +238,11 @@ class _DetailItem extends StatelessWidget {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
-        Text(title, style: AppText.b1b),
-        Space.yf(4),
+        Text(title, style: AppText.b1b?.w(6)),
+        Space.yf(2),
         Text(
           subtitle,
-          style: AppText.l2?.cl(AppTheme.c.text.main!),
+          style: AppText.l1?.w(4).cl(AppTheme.c.text.main!),
         ),
       ],
     );
@@ -191,8 +252,8 @@ class _DetailItem extends StatelessWidget {
 /// ----------------------
 /// BROKER REQUEST LIST
 /// ----------------------
-class BrokerRequestVerticalList extends StatelessWidget {
-  BrokerRequestVerticalList({super.key});
+class InvitationList extends StatelessWidget {
+  InvitationList({super.key});
 
   final List<Map<String, String>> dummyData = [
     {
@@ -226,7 +287,7 @@ class BrokerRequestVerticalList extends StatelessWidget {
     return ListView.separated(
       padding: Space.all(16),
       itemCount: dummyData.length,
-      separatorBuilder: (_, __) => Space.yf(12),
+      separatorBuilder: (_, __) => Space.yf(6),
       itemBuilder: (context, index) {
 
         final item = dummyData[index];
