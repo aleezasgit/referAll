@@ -36,6 +36,7 @@ class SusbcriptionBottomSheet extends StatelessWidget {
     App.init(context);
 
     return Container(
+      margin: Space.all(8),
       decoration: BoxDecoration(
         color: AppTheme.c.background.main,
         borderRadius: BorderRadius.circular(20.r),
@@ -52,6 +53,7 @@ class SusbcriptionBottomSheet extends StatelessWidget {
 
                 /// Drag Indicator
                 Container(
+                  margin: Space.only(top: 8),
                   width: 48.w,
                   height: 4.h,
                   decoration: BoxDecoration(
@@ -114,7 +116,7 @@ Space.yf(20),
                 borderRadius: BorderRadius.circular(24.r),
               ),
               child: Row(
-                crossAxisAlignment: CrossAxisAlignment.start,
+                crossAxisAlignment: CrossAxisAlignment.center,
                 children: [
                   /// Left Side
                   Column(
@@ -146,25 +148,18 @@ Space.yf(20),
                   const Spacer(),
             
                   /// Active Badge
-                  Column(
-                    mainAxisAlignment: MainAxisAlignment.center,
-                    crossAxisAlignment: CrossAxisAlignment.center,
-
-                    children: [
-                      Container(
-                        
-                        padding: Space.all(8,1),
-                        
-                        decoration: BoxDecoration(
-                                  color: AppTheme.c.primary.main,
-                                  borderRadius: BorderRadius.circular(16.r),
-                        ),
-                        child:  Text(
-                                  "Active",
-                                  style: AppText.l1bm?.cl(AppTheme.c.white!)
-                        ),
-                      ),
-                    ],
+                  Container(
+                    
+                    padding: Space.all(8,1),
+                    
+                    decoration: BoxDecoration(
+                              color: AppTheme.c.primary.main,
+                              borderRadius: BorderRadius.circular(16.r),
+                    ),
+                    child:  Text(
+                              "Active",
+                              style: AppText.l1bm?.cl(AppTheme.c.white!)
+                    ),
                   ),
                 ],
               ),
@@ -178,6 +173,7 @@ Space.yf(20),
             child: Row(
               children: [
                 Expanded(
+                  flex: 1,
                   child: AppButton(
                     label: "No",
                     onPressed: onCancel,
@@ -190,6 +186,7 @@ Space.yf(20),
                 Space.xf(10),
 
                 Expanded(
+                  flex: 2,
                   child: AppButton(
                     label: "Yes, cancel",
                     onPressed: onDelete,

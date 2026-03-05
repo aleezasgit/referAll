@@ -17,8 +17,8 @@ part '_state.dart';
 part 'static/_form_data.dart';
 part 'static/_form_keys.dart';
 
-class SupportScreen extends StatelessWidget {
-  const SupportScreen({super.key});
+class ContactUsScreen extends StatelessWidget {
+  const ContactUsScreen({super.key});
 
   @override
   Widget build(BuildContext context) {

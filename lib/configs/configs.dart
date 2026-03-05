@@ -1,7 +1,7 @@
 import 'dart:math';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-// import 'package:navigation_history_observer/navigation_history_observer.dart';
+import 'package:navigation_history_observer/navigation_history_observer.dart';
 
 part '_app_core_theme.dart';
 part '_app_dimensions.dart';
@@ -12,7 +12,7 @@ part '_core_theme.dart';
 part '_int_ext.dart';
 part '_space.dart';
 part '_space_ext.dart';
-// part '_string_ext.dart';
+part '_string_ext.dart';
 part '_ui.dart';
 part '_ui_props.dart';
 part '_date_ext.dart';

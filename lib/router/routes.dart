@@ -4,8 +4,8 @@ abstract class AppRoutes {
   static const splash = '/splash';
   static const PracticingScreen = '/practicing-screen';
   static const profileInfo = "/profile-info";
-    static const support = "/support";
-
+    static const contactUs = "/contact-us";
+static const brokerageProfile = "/brokerage-profile";
   static const onBoarding = '/onboarding';
   static const selectRole = '/select-role';
   static const signIn = '/sign-in';

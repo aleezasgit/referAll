@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_form_builder/flutter_form_builder.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:pract/configs/configs.dart';
+import 'package:pract/widgets/prefix_icon.dart';
 
 
 class PhoneCountry {
@@ -22,7 +23,7 @@ class AppPhoneNumberField extends StatefulWidget {
     required this.countryFieldName,
     required this.numberFieldName,
     this.margin,
-    this.hint,
+    this.hint, required String name, required TextInputType textInputType, required PrefixIcon prefixIcon,
   });
 
   @override

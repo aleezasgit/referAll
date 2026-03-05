@@ -71,12 +71,12 @@ class _Body extends StatelessWidget {
               Space.yf(6),
 
               /// PHONE
-              AppTextField(
+              AppPhoneNumberField(
                 name: _FormKeys.phone,
                 hint: "353146464-3543-14",
                 textInputType: TextInputType.phone,
                 prefixIcon:
-                    PrefixIcon(iconPath: 'assets/svgs/phone.svg'),
+                    PrefixIcon(iconPath: 'assets/svgs/phone.svg'), countryFieldName: 'usa', numberFieldName: '2304948',
               ),
 
               Space.yf(6),

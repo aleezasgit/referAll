@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:pract/expanded_card.dart';
 import 'package:pract/router/routes.dart';
+import 'package:pract/screens/profile/agent/my_profile/my_profile.dart';
 import 'package:pract/screens/profile/agent/profile_info/profile_info.dart';
 import 'package:pract/screens/profile/agent/support/support.dart';
 
@@ -8,8 +9,9 @@ import 'package:pract/screens/profile/agent/support/support.dart';
 final Map<String, Widget Function(dynamic)> appRoutes = {
   AppRoutes.splash: (_) => const PracticingScreen(),
   AppRoutes.profileInfo: (_) => const ProfileInfoScreen(),
-  AppRoutes.support: (_) => const SupportScreen(),
-  
+  AppRoutes.contactUs: (_) => const ContactUsScreen(),
+  AppRoutes.brokerageProfile: (_) => const MyProfileScreen(),
+
 
 };
 

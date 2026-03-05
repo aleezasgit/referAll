@@ -1,46 +1,66 @@
 import 'package:flutter/material.dart';
-import 'package:pract/expanded_card.dart';
-import 'package:pract/screens/profile/agent/my_profile/my_profile.dart';
-import 'package:pract/screens/profile/agent/profile_info/profile_info.dart';
-import 'package:pract/screens/profile/agent/support/support.dart';
-import 'package:pract/screens/resources/agent/accept_referals/accept_referrals.dart';
-import 'package:pract/screens/resources/agent/announcement/announcement.dart';
-import 'package:pract/screens/resources/agent/article_detail/article_details.dart';
-import 'package:pract/screens/resources/agent/resources/resources.dart';
-import 'package:pract/widget_liz/screens/agent_profile.dart';
+import 'package:flutter/services.dart' as services;
+import 'package:navigation_history_observer/navigation_history_observer.dart';
+import 'package:pract/router/router.dart';
+import 'package:pract/router/routes.dart';
 
-void main() {
+
+import 'configs/configs.dart' as theme;
+
+void main() async {
+  WidgetsFlutterBinding.ensureInitialized();
+
+  services.SystemChrome.setSystemUIOverlayStyle(
+    const services.SystemUiOverlayStyle(
+      statusBarColor: Colors.transparent,
+      statusBarBrightness: Brightness.light,
+      statusBarIconBrightness: Brightness.dark,
+      systemNavigationBarColor: Colors.transparent,
+    ),
+  );
+  services.SystemChrome.setEnabledSystemUIMode(
+    services.SystemUiMode.edgeToEdge,
+    overlays: [
+      services.SystemUiOverlay.top,
+      services.SystemUiOverlay.bottom, // ✅ show navigation bar
+    ],
+  );
+
   runApp(const MyApp());
 }
 
-class MyApp extends StatelessWidget {
+class MyApp extends StatefulWidget {
   const MyApp({super.key});
 
-  // This widget is the root of your application.
+  @override
+  State<MyApp> createState() => _MyAppState();
+}
+
+class _MyAppState extends State<MyApp> {
+  final navigatorKey = GlobalKey<NavigatorState>();
+  final List<NavigatorObserver> observers = [];
+
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
-      title: 'Flutter Demo',
-      theme: ThemeData(
-        // This is the theme of your application.
-        //
-        // TRY THIS: Try running your application with "flutter run". You'll see
-        // the application has a purple toolbar. Then, without quitting the app,
-        // try changing the seedColor in the colorScheme below to Colors.green
-        // and then invoke "hot reload" (save your changes or press the "hot
-        // reload" button in a Flutter-supported IDE, or press "r" if you used
-        // the command line to start the app).
-        //
-        // Notice that the counter didn't reset back to zero; the application
-        // state is not lost during the reload. To reset the state, use hot
-        // restart instead.
-        //
-        // This works for code too, not just values: Most code changes can be
-        // tested with just a hot reload.
-        colorScheme: .fromSeed(seedColor: Colors.deepPurple),
+    return AnnotatedRegion<services.SystemUiOverlayStyle>(
+      value: const services.SystemUiOverlayStyle(
+        statusBarColor: Colors.transparent,
+        systemNavigationBarColor: Colors.transparent,
+        systemNavigationBarContrastEnforced: true,
       ),
-      home: MyProfileScreen()
-,
+      child: MaterialApp(
+        navigatorKey: navigatorKey,
+        navigatorObservers: [...observers, NavigationHistoryObserver()],
+        theme: theme.themeLight,
+        initialRoute: AppRoutes.brokerageProfile,
+        builder: (context, child) {
+          theme.App.init(context);
+          return child!;
+        },
+        debugShowCheckedModeBanner: false,
+        onGenerateRoute: onGenerateRoutes,
+        routes: appRoutes,
+      ),
     );
   }
 }

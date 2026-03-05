@@ -3,7 +3,7 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:pract/configs/configs.dart';
 import 'package:pract/widget_liz/profile_widgets/bottom_sheets/delete_bottom_sheet.dart';
 import 'package:pract/widget_liz/profile_widgets/bottom_sheets/logout_bottom_sheet.dart';
-import 'package:pract/widget_liz/profile_widgets/bottom_sheets/susbcription_bottom_sheet.dart';
+import 'package:pract/screens/profile/widgets/susbcription_bottom_sheet.dart';
 import 'package:pract/widgets/design/buttons/app_button/app_button.dart';
 
 class AccountActionsSection extends StatelessWidget {
