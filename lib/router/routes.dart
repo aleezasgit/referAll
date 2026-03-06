@@ -4,10 +4,10 @@ abstract class AppRoutes {
   static const splash = '/splash';
   static const PracticingScreen = '/practicing-screen';
   
-    static const NotificationScreen= '/notification-screen';
+  static const NotificationScreen= '/notification-screen';
   static const profileInfo = "/profile-info";
-    static const contactUs = "/contact-us";
-static const brokerageProfile = "/brokerage-profile";
+ static const contactUs = "/contact-us";
+  static const brokerageProfile = "/brokerage-profile";
   static const onBoarding = '/onboarding';
   static const selectRole = '/select-role';
   static const signIn = '/sign-in';
@@ -20,4 +20,10 @@ static const brokerageProfile = "/brokerage-profile";
   static get manageSeat => null;
 
   static get subscription => null;
+
+
+  ///brokerage
+  static const bprofileInfo = "/bprofile-info";
+    static const seatscreen = "/seat-screen";
+  static const bmyprofilescreen = "/bmy-profile-screen";
 }

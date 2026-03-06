@@ -186,10 +186,12 @@ class NotificationTile extends StatelessWidget {
         Expanded(
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
+          //  mainAxisAlignment: MainAxisAlignment.center,
             children: [
 
               /// TITLE + INFO
               Text.rich(
+                
                 TextSpan(
                   children: [
                     TextSpan(

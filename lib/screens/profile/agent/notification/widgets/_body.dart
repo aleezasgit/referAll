@@ -29,6 +29,11 @@ class _Body extends StatelessWidget {
 
            
              buildNotification(context),
+
+             Space.yf(12),
+
+         
+
             ],
           ),
         ),
@@ -52,6 +57,7 @@ class _Body extends StatelessWidget {
       ),
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
+        mainAxisAlignment: MainAxisAlignment.center,
         children: [
 
           /// ----------------

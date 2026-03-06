@@ -96,125 +96,133 @@ class _BrokerRequestCardState extends State<BrokerRequestCard> {
           Space.yf(16),
 
           /// 🔹 HEADER ROW (CUSTOM EXPAND)
-          InkWell(
-            onTap: () {
-              setState(() {
-                isExpanded = !isExpanded;
-              });
-            },
-            borderRadius: BorderRadius.circular(16.r),
-            child: Row(
-              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+    /// 🔹 EXPANDABLE SECTION
+Container(
+  width: double.infinity,
+  padding: Space.all(16),
+  decoration: BoxDecoration(
+    color: AppTheme.c.background.main,
+    borderRadius: BorderRadius.circular(16.r),
+  ),
+  child: Column(
+    crossAxisAlignment: CrossAxisAlignment.start,
+    children: [
+
+      /// HEADER
+      InkWell(
+        onTap: () {
+          setState(() {
+            isExpanded = !isExpanded;
+          });
+        },
+        borderRadius: BorderRadius.circular(16.r),
+        child: Row(
+          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+          children: [
+            Text(
+              "Broker Details",
+              style: AppText.b1b?.w(6),
+            ),
+
+            AnimatedRotation(
+              turns: isExpanded ? 0 : 0.5,
+              duration: const Duration(milliseconds: 250),
+              child: SvgPicture.asset(
+                "assets/svgs/arrow-right.svg",
+                width: 18,
+                height: 18,
+              ),
+            ),
+          ],
+        ),
+      ),
+
+      /// ANIMATED CONTENT
+      AnimatedCrossFade(
+        duration: const Duration(milliseconds: 250),
+        crossFadeState: isExpanded
+            ? CrossFadeState.showSecond
+            : CrossFadeState.showFirst,
+        firstChild: const SizedBox(),
+        secondChild: Column(
+          children: [
+
+            Space.yf(12),
+
+            Divider(color: AppTheme.c.lightGrey.main),
+
+            Space.yf(12),
+
+            Row(
               children: [
-
-                Text(
-                  "Broker Details",
-                  style: AppText.b1b?.w(6),
+                Expanded(
+                  child: _DetailItem(
+                    title:widget.email,
+                    subtitle: "Email Address",
+                  ),
                 ),
-
-                AnimatedRotation(
-                  turns: isExpanded ? 0.5 : 0,
-                  duration: const Duration(milliseconds: 250),
-                  child: SvgPicture.asset(
-                    "assets/svgs/arrow-right.svg",
-                    width: 18,
-                    height: 18,
+                Expanded(
+                  child: _DetailItem(
+                    title: widget.phone,
+                    subtitle: "Phone Number",
                   ),
                 ),
               ],
             ),
-          ),
 
-          /// 🔹 ANIMATED CONTENT
-          AnimatedCrossFade(
-            duration: const Duration(milliseconds: 250),
-            crossFadeState: isExpanded
-                ? CrossFadeState.showSecond
-                : CrossFadeState.showFirst,
-            firstChild: const SizedBox(),
-            secondChild: Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
+            Space.yf(12),
+
+            Row(
               children: [
-
-                Space.yf(12),
-
-                Container(
-                  width: double.infinity,
-                  height: 1,
-                  color: AppTheme.c.lightGrey.shade400,
+                Expanded(
+                  child: _DetailItem(
+                    title: widget.agents,
+                    subtitle: "Total Agents",
+                  ),
                 ),
-
-                Space.yf(12),
-
-                Row(
-                  children: [
-                    Expanded(
-                      child: _DetailItem(
-                        title: widget.email,
-                        subtitle: "Email Address",
-                      ),
-                    ),
-                    Expanded(
-                      child: _DetailItem(
-                        title: widget.phone,
-                        subtitle: "Phone Number",
-                      ),
-                    ),
-                  ],
+                Expanded(
+                  child: _DetailItem(
+                    title: widget.address,
+                    subtitle: "Address",
+                  ),
                 ),
-
-                Space.yf(18),
-
-                Row(
-                  children: [
-                    Expanded(
-                      child: _DetailItem(
-                        title: widget.agents,
-                        subtitle: "Total Agents",
-                      ),
-                    ),
-                    Expanded(
-                      child: _DetailItem(
-                        title: widget.address,
-                        subtitle: "Address",
-                      ),
-                    ),
-                  ],
-                ),
-
-                Space.yf(16),
-
-                Row(
-                  children: [
-
-                    Expanded(
-                      child: AppButton(
-                        label: "Decline",
-                        onPressed: () {},
-                        backgroundColor: AppTheme.c.accent.red,
-                        buttonType: ButtonType.primaryWithIconLeft,
-                        iconPath: "assets/svgs/close.svg",
-                      ),
-                    ),
-
-                    Space.xf(8),
-
-                    Expanded(
-                      child: AppButton(
-                        label: "Accept",
-                        onPressed: () {},
-                        backgroundColor: AppTheme.c.primary.main,
-                        buttonType: ButtonType.primaryWithIconLeft,
-                        iconPath: "assets/svgs/check.svg",
-                      ),
-                    ),
-                  ],
-                ),
-
-            
               ],
             ),
-          ),
+          ],
+        ),
+      ),
+    ],
+  ),
+),
+
+Space.yf(16),
+
+/// BUTTONS OUTSIDE
+Row(
+  children: [
+    Expanded(
+      child: AppButton(
+        label: "Decline",
+        onPressed: () {},
+        backgroundColor: AppTheme.c.accent.red,
+        buttonType: ButtonType.primaryWithIconLeft,
+        iconPath: "assets/svgs/close-circle.svg",
+      ),
+    ),
+
+    Space.xf(12),
+
+    Expanded(
+      child: AppButton(
+        label: "Accept",
+        onPressed: () {},
+        backgroundColor: AppTheme.c.primary.main,
+        buttonType: ButtonType.primaryWithIconLeft,
+        iconPath: "assets/svgs/tick-circle.svg",
+      ),
+    ),
+  ],
+),
         ],
       ),
     );
@@ -285,6 +293,7 @@ class InvitationList extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return ListView.separated(
+      shrinkWrap: true,
       padding: Space.all(16),
       itemCount: dummyData.length,
       separatorBuilder: (_, __) => Space.yf(6),

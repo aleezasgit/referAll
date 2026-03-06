@@ -36,6 +36,8 @@ class AppText {
   static TextStyle? l2b;
   static TextStyle? l2bm;
 
+  static TextStyle? get h6b => null;
+
   static void init(BuildContext context) {
     ScreenUtil.init(context, designSize: const Size(375, 812));
 

@@ -37,6 +37,7 @@ class DeleteAccountBottomSheet extends StatelessWidget {
     return Container(
       //height: 259.h,
       padding: Space.all(16),
+      margin: Space.all(8),
     //     bottom: MediaQuery.of(context).viewInsets.bottom + 24.h,
     //     top: 24.h,
     //  ),
