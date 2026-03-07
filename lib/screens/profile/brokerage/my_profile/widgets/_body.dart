@@ -16,113 +16,101 @@ class _Body extends StatelessWidget {
         child: AppBackground(
           includeTopPadding: true,
           child: Column(
-                children: [
-        
-            
-        
-                  Space.yf(20),
-        
-                  /// Profile Card
-                  buildProfileCard(context),
-        
-                  Space.yf(6),
-        
-                  /// Tiles
-                  _ProfileTile(
-                    title: "Profile Info",
-                    iconPath: "assets/svgs/user.svg",
-                    onTap: () {
-                        AppRoutes.profileInfo.push(context);
-                    }
-                  ),
-        
-                  Space.yf(6),
-        
-                  _ProfileTile(
-                    title: "Payment Plan",
-                    iconPath: "assets/svgs/crown-2 (1).svg",
-                    onTap: (){
-                      print("Payment Plan Tapped");
-                    },
-                  ),
-        
-                  Space.yf(6),
-        
-                  _ProfileTile(
-                    title: "Notifications",
-                    iconPath: "assets/svgs/notification.svg",
-                    notificationCount: 10,
-                    onTap: ()  {
-                        AppRoutes.NotificationScreen.push(context);
-                      } ,
-                  ),
-        
-                  Space.yf(6),
-        
-                  _ProfileTile(
-                    title: "Contact Us",
-                    iconPath: "assets/svgs/notification.svg",
-                      onTap: () {
-                        AppRoutes.contactUs.push(context);
-                      }
-                
-                  ),
-        
-                  const Spacer(),
-        
-                  /// Delete Button
-                 AppButton(
-            label: "Delete Account",
-            onPressed: () {
-              DeleteAccountBottomSheet.show(
-                context,
-                onCancel: () => Navigator.pop(context),
-                onDelete: () {
-                  Navigator.pop(context);
-                 
+            crossAxisAlignment: CrossAxisAlignment.stretch,
+            children: [
+              Space.yf(20),
+
+              /// Profile Card
+              buildProfileCard(context),
+
+              Space.yf(6),
+
+              /// Tiles
+              _ProfileTile(
+                title: "Profile Info",
+                iconPath: "assets/svgs/user.svg",
+                onTap: () {
+                  AppRoutes.profileInfo.push(context);
                 },
-              );
-            },
-            buttonType: ButtonType.outlinedWithIconLeft,
-            iconPath: "assets/svgs/trashblack.svg", 
-           
-            borderColor: AppTheme.c.secondary.main,
-            backgroundColor: AppTheme.c.background.main,
-          
-          ),
-        
-          Space.yf(12),
-        
-          /// Logout Button
-          AppButton(
-            label: "Logout",
-            onPressed: () {
-          
-                    LogoutBottomSheet.show(
-                context,
-                onCancel: () => Navigator.pop(context),
-                onDelete: () {
-                  Navigator.pop(context);
-                },
-                    );
-              // logout logic here
-            },
-            buttonType: ButtonType.primaryWithIconLeft,
-            iconPath: "assets/svgs/logout.svg", // your svg
-            backgroundColor: AppTheme.c.accent.red,
-          
-             
-          ),
-        
-                  Space.yf(10),
-                 
-                ],
               ),
+
+              Space.yf(6),
+
+              _ProfileTile(
+                title: "Payment Plan",
+                iconPath: "assets/svgs/crown-2 (1).svg",
+                onTap: () {
+                  print("Payment Plan Tapped");
+                },
+              ),
+
+              Space.yf(6),
+
+              _ProfileTile(
+                title: "Notifications",
+                iconPath: "assets/svgs/notification.svg",
+                notificationCount: 10,
+                onTap: () {
+                  AppRoutes.NotificationScreen.push(context);
+                },
+              ),
+
+              Space.yf(6),
+
+              _ProfileTile(
+                title: "Contact Us",
+                iconPath: "assets/svgs/notification.svg",
+                onTap: () {
+                  AppRoutes.contactUs.push(context);
+                },
+              ),
+
+              Space.yf(27), 
+
+              /// Delete Button
+              AppButton(
+                label: "Delete Account",
+                onPressed: () {
+                  DeleteAccountBottomSheet.show(
+                    context,
+                    onCancel: () => Navigator.pop(context),
+                    onDelete: () {
+                      Navigator.pop(context);
+                    },
+                  );
+                },
+                buttonType: ButtonType.outlinedWithIconLeft,
+                iconPath: "assets/svgs/trashblack.svg",
+                borderColor: AppTheme.c.secondary.main,
+                backgroundColor: AppTheme.c.background.main,
+              ),
+
+              Space.yf(12),
+
+              /// Logout Button
+              AppButton(
+                label: "Logout",
+                onPressed: () {
+                  LogoutBottomSheet.show(
+                    context,
+                    onCancel: () => Navigator.pop(context),
+                    onDelete: () {
+                      Navigator.pop(context);
+                    },
+                  );
+                },
+                buttonType: ButtonType.primaryWithIconLeft,
+                iconPath: "assets/svgs/logout.svg",
+                backgroundColor: AppTheme.c.accent.red,
+              ),
+
+              Space.yf(20), // Bottom padding
+            ],
+          ),
         ),
       ),
     );
   }
-
 }
 
 
@@ -264,7 +252,9 @@ class _ProfileTile extends StatelessWidget {
     SeatActionCard(
       title: "Manage Your Seat",
       iconPath: "assets/svgs/3dcube.svg",
-      onTap: () {},
+      onTap: () {
+        AppRoutes.manageStateScreen.push(context);
+      },
     ),
 
     Space.xf(6),
@@ -272,7 +262,9 @@ class _ProfileTile extends StatelessWidget {
     SeatActionCard(
       title: "Analytics",
       iconPath: "assets/svgs/chart.svg",
-      onTap: () {},
+      onTap: () {
+           AppRoutes.banalyticsScreen.push(context);
+      },
     ),
 
   ],

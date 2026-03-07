@@ -5,6 +5,8 @@ import 'package:pract/screens/profile/agent/my_profile/my_profile.dart';
 import 'package:pract/screens/profile/agent/notification/notification.dart';
 import 'package:pract/screens/profile/agent/profile_info/profile_info.dart';
 import 'package:pract/screens/profile/agent/support/support.dart';
+import 'package:pract/screens/profile/brokerage/analytics/analytics.dart';
+import 'package:pract/screens/profile/brokerage/maanage_seat/seats.dart';
 import 'package:pract/screens/profile/brokerage/my_profile/my_profile.dart';
 import 'package:pract/screens/profile/brokerage/profile_info/profile_info.dart';
 import 'package:pract/widget_liz/profile_widgets/occupied_invitation_tapbar.dart';
@@ -21,6 +23,8 @@ final Map<String, Widget Function(dynamic)> appRoutes = {
     AppRoutes.seatscreen: (_) => const SeatsScreen(),
   
   AppRoutes.bmyprofilescreen: (_) => const BMyProfileScreen(),
+  AppRoutes.manageStateScreen: (_) => const ManageStateScreen(),
+  AppRoutes.banalyticsScreen: (_) => const BAnalyticsScreen(),
 
 
 

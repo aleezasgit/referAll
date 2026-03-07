@@ -6,6 +6,7 @@ import 'package:pract/widget_liz/profile_widgets/invitation_list.dart';
 import 'package:pract/widget_liz/profile_widgets/occupied_1.dart';
 import 'package:pract/widgets/core/app_bar/app_bar.dart';
 import 'package:pract/widgets/core/tab_bar/switch_tab_bar.dart';
+import 'package:pract/widgets/design/buttons/app_button/app_button.dart';
 
 class SeatsScreen extends StatefulWidget {
   const SeatsScreen({super.key});
@@ -141,6 +142,18 @@ class _SeatsScreenState extends State<SeatsScreen> {
                 style: AppText.l1?.w(4).cl(AppTheme.c.text.main!),
                 textAlign: TextAlign.center,
               ),
+              Space.yf(16),
+
+               SizedBox(
+                width: 97.w,
+                 child: AppButton(
+                         label: "Message",
+                         onPressed: () {},
+                         backgroundColor: AppTheme.c.primary.main,
+                         buttonType: ButtonType.primaryWithIconLeft,
+                         iconPath: "assets/svgs/msg.svg",
+                       ),
+               ),
             ],
           ),
         ),
