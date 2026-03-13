@@ -119,7 +119,7 @@ class _Body extends StatelessWidget {
                     Space.yf(8),
 
                     /// FUTURE CHART
-                    ReferralChartContainer(),
+                    // ReferralChartContainer(),
 
                     Space.yf(20),
                   ],

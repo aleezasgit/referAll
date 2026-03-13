@@ -9,6 +9,7 @@ import 'package:pract/screens/profile/brokerage/analytics/analytics.dart';
 import 'package:pract/screens/profile/brokerage/maanage_seat/seats.dart';
 import 'package:pract/screens/profile/brokerage/my_profile/my_profile.dart';
 import 'package:pract/screens/profile/brokerage/profile_info/profile_info.dart';
+import 'package:pract/screens/resources/agent/video/video.dart';
 import 'package:pract/widget_liz/profile_widgets/occupied_invitation_tapbar.dart';
 
 
@@ -18,6 +19,7 @@ final Map<String, Widget Function(dynamic)> appRoutes = {
   AppRoutes.contactUs: (_) => const ContactUsScreen(),
   AppRoutes.brokerageProfile: (_) => const MyProfileScreen(),
   AppRoutes.NotificationScreen: (_) => const NotificationScreen(),
+  AppRoutes.video: (_) => const Video(),
   //brokaerage
  AppRoutes.bprofileInfo: (_) => const BProfileInfoScreen(),
     AppRoutes.seatscreen: (_) => const SeatsScreen(),

@@ -52,7 +52,7 @@ class _MyAppState extends State<MyApp> {
         navigatorKey: navigatorKey,
         navigatorObservers: [...observers, NavigationHistoryObserver()],
         theme: theme.themeLight,
-        initialRoute: AppRoutes.banalyticsScreen,
+        initialRoute: AppRoutes.video,
         builder: (context, child) {
           theme.App.init(context);
           return child!;

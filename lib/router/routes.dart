@@ -28,4 +28,5 @@ abstract class AppRoutes {
   static const bmyprofilescreen = "/bmy-profile-screen";
   static const manageStateScreen = "/manage-state-screen";
   static const banalyticsScreen = "/banalytics-screen";
+  static const video = "/video-screen";
 }
